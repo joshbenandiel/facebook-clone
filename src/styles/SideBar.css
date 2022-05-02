@@ -1,0 +1,104 @@
+.sidebar-container {
+  max-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 350px;
+  background-color: #18191A;
+  padding: 8px;
+  padding-top: 20px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #3E4042;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.sidebar-menu li:hover {
+  border-radius: 10px;
+  background-color: #3A3B3C;
+}
+
+.icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 100%;
+  background-color: #303031;
+  position: relative;
+}
+
+.icon-arrow {
+  position: absolute;
+  z-index: 2;
+}
+
+.sidebar-shortcut-section p {
+  font-weight: bold;
+  color: gray;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.sidebar-menu-shortcuts {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+}
+
+.sidebar-menu-shortcuts li:hover {
+  border-radius: 10px;
+  background-color: #3A3B3C;
+}
+
+.sidebar-menu-shortcuts li{
+  display: flex;
+  align-items: center;
+  color: #fff;
+  height: 50px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.sidebar-container::-webkit-scrollbar {
+  width: 15px;
+  /* opacity: 0.75; */
+}
+
+.sidebar-container::-webkit-scrollbar-track {
+  background: #242526;
+  /* opacity: 0.5; */
+  
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 12px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+

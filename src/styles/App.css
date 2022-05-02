@@ -1,0 +1,15 @@
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  background-color: #18191A;
+  position: relative;
+}
+
+.left-sidebar {
+  display: flex;
+  position: sticky;
+  align-self: flex-start;
+  top: 0;
+}
+

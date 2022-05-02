@@ -1,0 +1,97 @@
+.right-section-container {
+  background-color: #18191A;
+  height: 100vh;
+  width: 350px;
+}
+
+.sponsor-section {
+  height: auto;
+  color: #B0B3B8;
+  font-size: 19px;
+  border-bottom: 1px solid #3E4042;
+}
+
+.yourpage-section {
+  height: auto;
+  color: #B0B3B8;
+  font-size: 19px;
+  border-bottom: 1px solid #3E4042;
+}
+
+.pages-wrapper:hover {
+  cursor: pointer;
+  width: 100%;
+  background-color: #3A3B3C;
+  border-radius: 12px;
+}
+
+.pages-wrapper {
+  padding: 5px;
+  margin: 5px 10px 5px 0;
+}
+
+.birthday-section {
+  color: #B0B3B8;
+  font-size: 19px;
+  height: auto;
+  border-bottom: 1px solid #3E4042;
+}
+
+.birthday-wrapper:hover {
+  cursor: pointer;
+  width: 100%;
+  background-color: #3A3B3C;
+  border-radius: 12px;
+}
+
+.contact-section {
+  color: #fff;
+  font-size: 19px;
+  height: auto;
+}
+
+.contact-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 13px;
+}
+
+.contact-wrapper p {
+  margin: 0;
+}
+
+.contact-wrapper:hover {
+  cursor: pointer;
+  width: 100%;
+  background-color: #3A3B3C;
+  border-radius: 12px;
+}
+
+.green-circle {
+  position: absolute;
+  background-color: #31A24C;
+  height: 12px;
+  width: 12px;
+  border-radius: 100%;
+  right: 10px;
+  bottom: -2px;
+  z-index: 2;
+}
+
+.new-message-button {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.new-message-circle {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: #4B4C4F;
+}

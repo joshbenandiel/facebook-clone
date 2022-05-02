@@ -1,0 +1,142 @@
+.notification-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 350px;
+  background-color: #242526;
+  z-index: 500;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 15px;
+}
+
+.notification-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 98%;
+  margin: 10px 0;
+  
+}
+
+.notification-wrapper h3 {
+  color: #fff;
+}
+
+.three-dots {
+  cursor: pointer;
+}
+
+.three-dots-wrapper{
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.button-notif-style {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 18px;
+  background-color: #3A3B3C;
+  color: #fff;
+}
+
+.button-notif-style-active {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 18px;
+  background-color: #263951;
+  color: #2D88FF;
+}
+
+
+.earlier-text {
+  color: #fff;
+  font-size: 19px;
+}
+
+.notif-text {
+  margin: 0;
+  padding: 5px;
+  color: #fff;
+  width: 100%;
+}
+
+.notifc-date {
+  margin: 0;
+  padding-left: 4px;
+  color: #fff;
+  font-size: 14px;
+  color: #2E89FF;
+}
+
+.notif-blue-circle {
+  position: absolute;
+  top: 40px;
+  right: 10px;
+}
+
+.notif-wrapper {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.notif-wrapper:hover {
+  background-color: #3A3B3C;
+}
+
+.notif-wrapper:hover .three-dots-notif-circle  {
+  background-color: #242526;
+}
+
+
+.three-dots-notif-circle {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  height: 35px;
+  width: 35px;
+  background-color: #3A3B3C;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.three-dots-notif-circle:hover {
+  opacity: 1;
+}
+.three-dots-notif-circle-active {
+  cursor: pointer;
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  height: 35px;
+  width: 35px;
+  background-color: #242526;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #3E4042;
+}
+
+
+
+.three-dots-option-container {
+  background-color: #242526;
+  border-radius: 12px;
+  height: 150px;
+  width: 300px;
+  top: 90%;
+  right: -40%;
+  position: absolute;
+  border: 1px solid #3E4042;
+  z-index: 2000;
+}

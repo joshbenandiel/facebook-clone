@@ -1,0 +1,87 @@
+.search-container {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+  
+}
+
+.search-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 600px;
+  width: 600px;
+  background-color:#242526;
+  border-radius: 12px;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 8px 8px 8px 35px;
+  background-color: #3A3B3C;
+  color: #fff;
+}
+
+.search-icon {
+  color: #fff;
+  position: absolute;
+  top: 6px;
+  left: 12px;
+}
+
+.search-exit {
+  font-size: 40px;
+  color: #4E4F50;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.recent-search-text {
+  color: #fff;
+  font-size: 19px;
+  padding: 20px 10px 0px 10px;
+}
+
+.user-search {
+  font-size: 30px;
+  color: #fff;
+}
+
+.user-search-icon-wrapper {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #18191A;
+  margin: 15px;
+  
+}
+
+.user-search-container {
+  height: 50px;
+  cursor: pointer;
+  padding: 2px;
+  position: relative;
+}
+
+.user-search-container:hover {
+  background-color: #292A2C;
+  border-radius: 12px;
+}
+
+.user-search-close {
+  position: absolute;
+  top: 20%;
+  right: 5px;
+  font-size: 30px;
+}
