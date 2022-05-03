@@ -1,13 +1,25 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import '../../styles/Search.css'
 import {HiOutlineSearch} from 'react-icons/hi'
 import {BsXCircleFill} from 'react-icons/bs'
 import {IoMdTime, IoIosClose} from 'react-icons/io'
+import { useOutsideAlerter } from '../../hooks/OutsideAlerter'
 
 export const Search = ({setId}) => {
+
+  const wrapper = useRef()
+  const outsideIsClick  = useOutsideAlerter(wrapper)
+
+  
+  useEffect(() => {
+    if(outsideIsClick){
+      setId('home')
+    }
+  },[outsideIsClick])
+  
   return (
     <section className='search-container'>
-        <div className='search-section'>
+        <div ref={wrapper} className='search-section'>
           <div className='position-relative d-flex'>
             <span className='search-icon'><HiOutlineSearch/></span>
             <input className='search-input' type="text" placeholder='Search Facebook'/>

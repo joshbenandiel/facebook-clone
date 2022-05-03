@@ -14,7 +14,7 @@ function App() {
     <div className='App'>
       <div className='left-sidebar'>
         <Navbar setId={setId} id={id}/>
-        <SideBar id={id}/>
+        <SideBar id={id} setId={setId}/>
       </div>
       <NewsFeed id={id}/>
       <div className='left-sidebar'>

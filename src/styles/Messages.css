@@ -1,0 +1,63 @@
+.messages-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 98%;
+  margin: 10px 0;
+}
+
+.messages-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 350px;
+  background-color: #242526;
+  z-index: 500;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-header {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.messages-icons {
+  margin: 6px 6px 6px 4px;
+  height: auto;
+  width: auto;
+  border-radius: 100%;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.messages-icons:hover {
+  height: auto;
+  width: auto;
+  border-radius: 100%;
+  background-color: #3A3B3C;
+  padding: 5px;
+}
+
+.messages-footer {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background-color: transparent;
+  border-top: 1px solid #3E4042;
+  z-index: 500;
+}
+.messages-footer p {
+  margin: 0;
+  color: #4599FF;
+}

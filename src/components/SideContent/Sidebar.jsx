@@ -4,8 +4,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FaAngleDown } from 'react-icons/fa'
 import { FaAngleUp } from 'react-icons/fa'
 import { Notification } from '../SideContent/Notification'
+import { Messages } from '../SideContent/Messages';
 
-export const SideBar = ({id}) => {
+export const SideBar = ({id, setId}) => {
 
 
   const [isOpened, setIsOpened] = useState(false)
@@ -20,7 +21,8 @@ export const SideBar = ({id}) => {
 
   return (
     <div className='position-relative'>
-      {id === 'notification' && <Notification/>}
+      {id === 'notification' && <Notification setId={setId}/>}
+      {id === 'messenger' && <Messages setId={setId}/>}
       <div className='sidebar-container'>
         <ul className='sidebar-menu'>
           <li>
