@@ -6,7 +6,7 @@ import { FaAngleUp } from 'react-icons/fa'
 import { Notification } from '../SideContent/Notification'
 import { Messages } from '../SideContent/Messages';
 
-export const SideBar = ({id, setId}) => {
+export const SideBar = ({id, setId, user}) => {
 
 
   const [isOpened, setIsOpened] = useState(false)
@@ -26,7 +26,10 @@ export const SideBar = ({id, setId}) => {
       <div className='sidebar-container'>
         <ul className='sidebar-menu'>
           <li>
-            <AccountCircleIcon className='p-1' sx={{fontSize: 50}}/> Josh Jacinto
+            <div className='display-image-icon-sidebar p-2 pe-2 ps-1'>
+              <img src={user.user.photoURL}></img>
+            </div> 
+            {user.user.displayName}
           </li>
           {defineImages().map((image,index) => {
             return (

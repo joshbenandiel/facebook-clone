@@ -17,25 +17,27 @@ export const Messages = ({setId}) => {
     }
   },[outsideIsClick])
   return (
-    <div ref={wrapper} className='messages-container position-relative'>
+    <div ref={wrapper} className='messages-container'>
       <div className='messages-wrapper'>
-        <div className='messages-header'>
-          <h3>Chats</h3>
-          <div>
-            <BsThreeDots className='messages-icons'size={20}/>
-            <BsArrowsFullscreen className='messages-icons' size={18}/>
-            <RiVideoAddFill className='messages-icons' size={20}/>
-            <BsPencilSquare className='messages-icons' size={18}/>
+        <div className='position-relative'>
+          <div className='messages-header'>
+            <h3>Chats</h3>
+            <div>
+              <BsThreeDots className='messages-icons'size={20}/>
+              <BsArrowsFullscreen className='messages-icons' size={18}/>
+              <RiVideoAddFill className='messages-icons' size={20}/>
+              <BsPencilSquare className='messages-icons' size={18}/>
+            </div>
+          </div>
+          <div className="messages-input position-relative mt-2 mb-2">
+            <span className='search-icon'><HiOutlineSearch/></span>
+            <input className='search-input' type="text" placeholder='Search Facebook'/>
+          </div>
+          </div>
+          <div className='messages-footer'>
+            <p>See all in messenger</p>
           </div>
         </div>
-        <div className="messages-input position-relative mt-2 mb-2">
-          <span className='search-icon'><HiOutlineSearch/></span>
-          <input className='search-input' type="text" placeholder='Search Facebook'/>
-        </div>
       </div>
-      <div className='messages-footer'>
-        <p>See all in messenger</p>
-      </div>
-    </div>
   )
 }

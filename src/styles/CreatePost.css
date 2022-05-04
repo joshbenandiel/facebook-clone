@@ -1,0 +1,149 @@
+.create-post-container {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+  
+}
+
+.create-post-wrapper {
+  background-color: #242526;
+  height: auto;
+  width: 500px;
+  position: absolute;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+
+}
+
+.header-post-section {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  color: #fff;
+  display: flex;
+  border-bottom: 1px solid #3E4042;
+}
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 8px;
+  color: #3A3B3C;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.create-post-user-icon {
+  height: 50px;
+  border-radius: 100%;
+ 
+}
+
+.create-post-section {
+  color: #fff;
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+}
+
+.public-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.public-button-wrapper:hover {
+  background-color: #3A3B3C;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-post-input {
+  height: 150px;
+  width: 100%;
+  font-size: 25px;
+  color: #fff;
+  background-color: #242526;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.add-to-your-post-section {
+  display: flex;
+  align-items: center;
+  border: 1px solid #3E4042;
+  border-radius: 12px;
+  height: 50px;
+  width: 100%;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.createpost-button-disable {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: #666666;
+  padding: 6px;
+  background-color: #505151;
+  cursor: not-allowed !important;
+}
+
+.createpost-button {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  color: #fff;
+  padding: 6px;
+  background-color: #2374E1;
+  cursor: pointer;
+
+}
+.add-post-icon {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  padding: 2px;
+}
+
+.add-post-icon:hover {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  padding: 2px;
+  background-color: #505151;
+  border-radius: 100%;
+
+}
+
+.upload-photo-container {
+  max-height: 500px;
+  overflow: hidden;
+  width: 100%;
+  background-color: #242526;
+  padding: 10px;
+  border: 1px solid #3E4042;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.upload-photo-container:hover {
+  background-color: #505151;
+  color: #fff;
+}
+
+.close-button:hover {
+  filter: brightness(1.8);
+}
+
+.selected-image {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}

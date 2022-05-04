@@ -4,15 +4,14 @@ import logo from '../../images/navbar-images/facebook.png'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
-export const Navbar = ({id, setId}) => {
+export const Navbar = ({id, setId, user}) => {
 
   const activeIcon = (e) => {
     setId(e.target.id)
   }
-
+  
   return (
       <div className='navbar-container position-relative'>
         <div className='navbar-logo'>
@@ -67,7 +66,10 @@ export const Navbar = ({id, setId}) => {
           <img src='https://static.xx.fbcdn.net/rsrc.php/v3/y5/r/duk32h44Y31.png?_nc_eui2=AeHIW4oes6YetsDAfNJOQIBD2NRDTXGHJ53Y1ENNcYcnnb-g2DIUQlnI7JZpmdVbi6UYgNDoC8KSICl9mCzdbehm' alt="watch" />
           </div>
         </div>
-        <AccountCircleIcon className='user' sx={{fontSize: 70}}/>
+        <div className='display-image-icon'>
+          <img src={user.user.photoURL}></img>
+        </div>
+     
       </div>
   )
 }

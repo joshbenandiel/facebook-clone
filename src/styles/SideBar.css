@@ -102,3 +102,8 @@
   background-clip: content-box;
 }
 
+.display-image-icon-sidebar img {
+  cursor: pointer;
+  height: 40px;
+  border-radius: 100%;
+}
