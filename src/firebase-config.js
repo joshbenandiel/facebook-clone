@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, set , child, get , push} from "firebase/database";
+import { getDatabase, ref, set , child, get , remove } from "firebase/database";
 import { useEffect, useState } from 'react';
 
 const firebaseConfig = {
@@ -15,14 +15,26 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getDatabase();
 
-
-export const writeUserData = (userId, name, icon, imageUrl) =>  {
-  const db = getDatabase();
+export const writeUserData = (userId, name, icon, imageUrl, time, id) =>  {
   set(ref(db, 'users/' + userId), {
+    id: id,
     username: name,
     display: icon,
-    profile_picture : imageUrl
+    stories : imageUrl,  
+    date: time
+  });
+}
+
+export const writePostData = (userId, name, icon, content, imageUrl, date, id) =>  {
+  set(ref(db, 'posts/' + userId), {
+    id: id,
+    username: name,
+    display: icon,
+    content: content,
+    image : imageUrl,
+    date: date
   });
 }
 
@@ -60,8 +72,6 @@ export const useData = (userId) => {
 export const useGetAllData = () => {
 
   const [allData, setAllData] = useState([])
-
-  const db = getDatabase();
   const dbRef = ref(db)
   
 
@@ -80,10 +90,45 @@ export const useGetAllData = () => {
     data()
   },[data])
 
+
+
   return {allData}
 }
 
+export const useGetPostsData = () => {
 
+  const [allPostsData, setAllPostsData] = useState([])
+  console.log(allPostsData.length)
+  const dbRef = ref(db)
+  
+  function data(){
+    get(child(dbRef, 'posts'))
+    .then((snapshot) => {
+        let posts = []
+        snapshot.forEach(childSnapshot => {
+          posts.push(childSnapshot.val())
+          setAllPostsData(posts)
+        })
+    })
+  }
+  data()
+  
+
+
+  return { allPostsData }
+}
+
+
+
+export const deletePostsData = (userId) => {
+  remove(ref(db, 'posts/' + userId))
+  .then(() => {
+    console.log('Deleted')
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
 
 
 

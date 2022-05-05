@@ -5,9 +5,11 @@ import { RightSection } from './RightContent/RightSection';
 import { Navbar } from './SideContent/Navbar';
 import { Search } from './SideContent/Search';
 import { SideBar } from './SideContent/Sidebar';
-import { facebookSignIn, useFacebook } from '../facebook';
+import { useFacebook } from '../facebook';
 import logo from '../images/Facebook-Logo.png'
 import { Createpost } from './Main/Createpost';
+import { AllStories } from './Main/AllStories';
+
 
 
 
@@ -16,7 +18,7 @@ function App() {
   const [id, setId] = useState('home')
   const {signIn, user, error} = useFacebook()
   const [createPost, setCreatePost] = useState(null)
-
+  const [seeAllStories, setSeeAllStories] = useState(false)
   const [postContent, setPostContent] = useState('')
 
   const [postData, setPostData] = useState([
@@ -36,6 +38,8 @@ function App() {
     <>
     {user.accessToken ? (
       <div className='App'>
+        {id === 'search' && <Search setId={setId}/>}
+        {seeAllStories && <AllStories setSeeAllStories={setSeeAllStories}/>}
         <div className='left-sidebar'>
           <Navbar  
             user={user} 
@@ -47,14 +51,14 @@ function App() {
             setId={setId}/>
         </div>
         <NewsFeed 
+          setSeeAllStories={setSeeAllStories}
           postData={postData}
           setCreatePost={setCreatePost}
           user={user}
           id={id}/>
         <div className='left-sidebar'>
-        <RightSection/>
+          <RightSection/>
         </div>
-        {id === 'search' && <Search setId={setId}/>}
         {createPost && 
           <Createpost 
             postContent={postContent}

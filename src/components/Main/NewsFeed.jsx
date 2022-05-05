@@ -4,7 +4,7 @@ import '../../styles/NewsFeed.css'
 import { IoIosAdd, IoMdPhotos } from 'react-icons/io'
 import { MdVideoCameraFront } from 'react-icons/md'
 import { GoSmiley } from 'react-icons/go'
-import { RiVideoAddFill , RiShareForwardLine} from 'react-icons/ri'
+import { RiVideoAddFill , RiShareForwardLine, RiDeleteBin2Fill} from 'react-icons/ri'
 import {FaUserCircle, FaUserFriends} from 'react-icons/fa'
 import {BsDot, BsThreeDots} from 'react-icons/bs'
 import {AiOutlineLike} from 'react-icons/ai'
@@ -12,31 +12,27 @@ import {VscComment} from 'react-icons/vsc'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {BsFillArrowRightCircleFill} from 'react-icons/bs'
 import CircularProgress from '@mui/material/CircularProgress';
-import { writeUserData, useData, useGetAllData } from '../../firebase-config';
+import { writeUserData, useGetAllData , useGetPostsData, deletePostsData} from '../../firebase-config';
 
 
-export const NewsFeed = ({id, user, setCreatePost, postData}) => {
+export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
 
   const nickname = user.user.displayName.split(' ')
-  const email = user.user.email;
   const [story, setStory] = useState(false)
   const [imageUpload, setImageUpload] = useState(null)
   const [loading, setLoading] = useState(false)
-  const [stories, setStories] = useState([])
- 
+  const [deleteIsTrue, setDeleteIsTrue] = useState(null)
+  
+  
+  
+  const today = new Date().toLocaleString();
 
 
   
-  const {allData} = useGetAllData()
+  const {allData } = useGetAllData()
+  const { allPostsData } = useGetPostsData()
+  console.log(allPostsData)
   
-  // console.log(allData)
-
-
-
-
-
-
-
   
   const inputRef = useRef()
 
@@ -78,7 +74,9 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
             allData.length + 1,
             user.user.displayName,
             user.user.photoURL,
-            downloadURL
+            downloadURL,
+            today,
+            allData.length + 1
           )
           setImageUpload('')
           setStory(false)
@@ -89,9 +87,17 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
     } 
   }
 
-
+  const getPosts = (user) => {
+    if(deleteIsTrue === user) 
+    return setDeleteIsTrue('')
+    setDeleteIsTrue(user)
+  }
  
-
+  const handleDelete = (userId) => {
+    console.log(userId)
+    deletePostsData(userId)
+    // console.log(allPostsData)
+  }
   
   return (
     <>
@@ -137,8 +143,9 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
         </div>
       )}
       <section className="wrapper position-relative">
-        {allData.length > 4 && 
+        {allData.length > 3 && 
           <BsFillArrowRightCircleFill 
+          onClick={() => setSeeAllStories(true)}
           className='see-all-stories-button' 
           size={40}
         />}
@@ -153,15 +160,15 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
             </span>
             <p>Create story</p>
           </div>
-          {allData.slice(0,4).map((user, index)=> {
-            if(!user.display) return null;
+          {allData.slice(0).reverse().slice(0,4).map((user, index)=> {
+            if(!user.date) return null;
             return (
             <div 
               key={index}
               className='friends-story p-0 ms-2'
             >
               <img className='friends-story-user-profile' src={user.display} alt=''/>
-              <img className='story-image-uploaded'src={user.profile_picture} alt="user-story" />
+              <img className='story-image-uploaded'src={user.stories} alt="user-story" />
               <p>{user.username}</p>
             </div>
             )
@@ -173,7 +180,7 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
             <div className="post-input">
               <img className='input-icon' src={user.user.photoURL} alt="" />
               <button 
-                onClick={() => setCreatePost(prev => !prev)}
+                onClick={() => setCreatePost(true)}
                 className='input-box' name='post' type="text" placeholder={`What's on your mind, User`}>
                 What's on your mind, {nickname[0]}?
               </button>
@@ -187,7 +194,9 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
                   />
                   <p className='m-0'>Live video</p>
               </div>
-              <div className='post-button'>
+              <div 
+                onClick={() => setCreatePost(true)}
+                className='post-button'>
                   <IoMdPhotos 
                     className='button' 
                     size={25} 
@@ -226,18 +235,34 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
           </div>
         </div>
         <div className='row'>
-          {postData.map((user, index)=> {
-            if (!user.profile) return null;
+          {allPostsData.slice(0).reverse().map((user, index)=> {
+            if (!user) return null;
             return (
               <div key={index} className='newsfeed-posts mt-3 position-relative p-0'>
                 <div className='newsfeed-text-wrapper'>
-                  <span className='newsfeed-dot'><BsThreeDots color='#fff' size={22}/></span>
+                  <span
+                     onClick={() => getPosts(user.date)}
+                     className='newsfeed-dot'>
+                      <BsThreeDots color='#fff' size={22}/>
+                  </span>
+                  {deleteIsTrue === user.date &&
+                    <button 
+                      onClick={() => handleDelete(user.id)}
+                      className='delete-button-wrapper'>
+                        <p className='p-0 fw-bold me-1'>Delete</p>
+                        <RiDeleteBin2Fill 
+                          className='newsfeed-delete'
+                          color='#fff' 
+                          size={20}
+                        />
+                    </button>}
                   <div className='d-flex'>
-                    <img src={user.icon} alt=''className='newsfeed-icon me-2'/>
+                    <img src={user.display} alt=''className='newsfeed-icon me-2'/>
                   <div>
-                    <p className='user-name-newsfeed fw-bold'>{user.profile}</p>
+                    <p className='user-name-newsfeed fw-bold'>{user.username}</p>
                     <div className='d-flex align-items-center'>
-                      <p style={{fontSize: '12px'}} className='user-name-newsfeed'>{user.date}</p><BsDot color='#fff'/><FaUserFriends color='#fff'/>
+                      <p style={{fontSize: '12px'}} className='user-name-newsfeed'>{user.date}</p>
+                      <BsDot color='#fff'/><FaUserFriends color='#fff'/>
                     </div>
                   </div>
                   </div>
@@ -245,10 +270,9 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
                     <p className='fs-5'>{user.content}</p>
                   </div>
                 </div>
-                {user.images && (
+                {user.image && (
                   <div className='position-relative'>
-                    <img className='newsfeed-content'src={user.images} alt="user-post" />
-                    {/* <img className='content-background'src={user.images} alt="user-post" /> */}
+                    <img className='newsfeed-content'src={user.image} alt="user-post" />
                   </div>
                 )}
                 <div className='pe-3 ps-3'>
@@ -267,7 +291,7 @@ export const NewsFeed = ({id, user, setCreatePost, postData}) => {
               <div className='pe-3 ps-3'>
                   <div className='comment-section'>
                     <div className='d-flex p-2'>
-                      <img src={user.icon} alt=''className='newsfeed-icon me-2'/>
+                      <img src={user.display} alt=''className='newsfeed-icon me-2'/>
                       <input className='comment-input' type='text' placeholder='Write a comment...'></input>
                     </div>
                   </div>

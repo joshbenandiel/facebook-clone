@@ -1,0 +1,104 @@
+.allstories-container {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  margin-left: 70px;
+  background-color: #18191A;
+  z-index: 501;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allstories-left-container {
+  width: 350px;
+  height: 100vh;
+  background-color: #242526;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  padding: 20px;
+  overflow: scroll;
+}
+
+.close-button-stories {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+.your-story-section {
+  height: auto;
+  width: 100%;
+}
+
+.your-story-add {
+  background-color: #3A3B3C;
+  border-radius: 100%;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.all-story-display-icon {
+  height: 60px;
+  border-radius: 100%;
+  border: 3px solid #2E89FF;
+}
+
+.all-story-wrapper {
+  display: flex;
+  text-align: left;
+  color: #fff;
+  height: auto;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  padding-left: 10px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  border-radius: 12px;
+
+}
+
+.all-story-wrapper-active {
+  display: flex;
+  text-align: left;
+  color: #fff;
+  height: auto;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  padding-left: 10px;
+  border: none;
+  background-color: #3A3B3C;
+  outline: none;
+  border-radius: 12px;
+}
+
+.all-story-wrapper:hover {
+  background-color: #3A3B3C;
+  
+}
+
+.all-stories-image {
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.image-container {
+  height: 90vh;
+  width: 600px;
+  
+}
+
+/* .image-allstories-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+} */

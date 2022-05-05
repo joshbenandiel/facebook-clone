@@ -12,12 +12,15 @@ import {GiMicrophone} from 'react-icons/gi'
 import {BsThreeDots} from 'react-icons/bs'
 import {MdAddPhotoAlternate} from 'react-icons/md'
 import CircularProgress from '@mui/material/CircularProgress';
+import { writePostData, useGetPostsData } from '../../firebase-config'
+import uuid from 'react-uuid'
 
 export const Createpost = ({user,setCreatePost, postData, setPostData, setPostContent, postContent}) => {
 
 
   	
   const today = new Date().toLocaleString();
+
 
   const nickname = user.user.displayName.split(' ')
   const uploadRef = useRef();
@@ -35,6 +38,8 @@ export const Createpost = ({user,setCreatePost, postData, setPostData, setPostCo
     const image = e.target.files[0];
     setUserPhoto(image)
   }
+
+  const { allPostsData } = useGetPostsData()
   
   const handlePost = () => {
     
@@ -61,32 +66,30 @@ export const Createpost = ({user,setCreatePost, postData, setPostData, setPostCo
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log('File available at', downloadURL);
           setLoading(false)
-          setPostData([
-            {
-              profile: user.user.displayName,
-              icon: user.user.photoURL,
-              content: postContent,
-              images: downloadURL,
-              date: today
-            },
-            ...postData,
-          ])
+          writePostData(
+            allPostsData.length + 1,
+            user.user.displayName,
+            user.user.photoURL,
+            postContent,
+            downloadURL,
+            today,
+            allPostsData.length + 1,
+          )
           setCreatePost(false)
         });
         
       }
       );
     } else {
-      setPostData([
-        {
-          profile: user.user.displayName,
-          icon: user.user.photoURL,
-          content: postContent,
-          images: '',
-          date: today
-        },
-        ...postData,
-      ])
+      writePostData(
+        allPostsData.length + 1,
+        user.user.displayName,
+        user.user.photoURL,
+        postContent,
+        '',
+        today,
+        allPostsData.length + 1,
+      )
       setCreatePost(false)
     }
     

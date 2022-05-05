@@ -184,21 +184,10 @@ const images = [
 
 
 const shortcuts = [
-  {
-    url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/42630609_2166936443330818_3464735768197464064_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeE3cuvWpgN3EhjKKy9s4CCIkGwkPrvJAp6QbCQ-u8kCnl3D8Zut4JfD4pKc1DEFj3eygl8EmymM8n0Vi9nvrMjr&_nc_ohc=9xMWiBG_BosAX-f6aXc&_nc_oc=AQnbwm_MUXL0xAs3dCmN8znDi1541T6JY1hlwvxQ8m515Nm-ZCtaVv6vnkvGvdTsIHo&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT-n1J_mI7xV7gc4pB94SKp8veAvZ35B8mEjyjc4JzVv-w&oe=627332AF',
-    name: '8 Ball Pool'
-  },
-  {
-    url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/22088589_1654976451201719_5191478939503034368_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeHQ-tGOWktRQPbU00Du5vYn2pOLRy8vZ07ak4tHLy9nTvKVI5dhBEZXU1E_Y7rNCj_bZg1RnCqr5BeA6cFjbDQR&_nc_ohc=FPYLrbqXkY0AX9NTrFm&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT-Oq7xM4PF2UVzPc9GAHj9LRRAKH6WuE9GZaoG6Dl5Rrg&oe=6272DCC2',
-    name: 'Candy Crush Saga'
-  },
+
   {
     url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/12512181_774488585988936_247651205_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeH8zD8bJRKOqCyUQbrFHbLP8Z4YJw2NRjXxnhgnDY1GNYcAFYCwVJyVS6lEkVIxqbYYf_kJR4jMGmA0xL8wKEVe&_nc_ohc=HgfRFIhgSEoAX-R5s92&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT8jBEaG5lcb4xyJ1uUa7Jva1RS7YS99ylpo0ZxfIOThWQ&oe=62738C9A',
     name: 'Coin Master'
-  },
-  {
-    url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/28129135_1686685264729832_3956709029115330560_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeFofv2yvxMBfgRjeAwyQYwXoEjsVUqi63agSOxVSqLrdm8u8paepkAOY-eUJhDrEXmeJIquBFfdV-I1JjdoWYQ4&_nc_ohc=JXObhIqG94MAX9lTMEl&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT87UriHi78-hZEP3_aSJPnCd8fDDvOH9-RsIDentOZ6Yg&oe=62728FA9',
-    name: 'Dragon City'
   },
   {
     url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/26477732_5082148895180525_4133107059698696192_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeFsWWWoYAUDvl0Xd3RYQ1qN0rprziV-zurSumvOJX7O6qXX3mbYCCk49XxYTk6_RGwHxGO07oOTeaplusWycsSk&_nc_ohc=aWScs_oCRrgAX8ySV6J&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT8uUt8HOdNP7xVvXylzW5__mUMASHiFuRWhoBqsuYm1dA&oe=62735BE4',
