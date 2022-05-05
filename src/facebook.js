@@ -21,14 +21,11 @@ export const useFacebook = () => {
           photoURL: user.photoURL + "?height=500&access_token=" + accessToken,
         }).then(() => {
         }).catch((error) => {
+          console.log(error)
         });
         setUser({user, accessToken});
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = FacebookAuthProvider.credentialFromError(error);
         setError(error);
       });
   }

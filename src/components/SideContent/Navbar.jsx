@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../styles/Navbar.css'
 import logo from '../../images/navbar-images/facebook.png'
 import HomeIcon from '@mui/icons-material/Home';
@@ -67,7 +67,7 @@ export const Navbar = ({id, setId, user}) => {
           </div>
         </div>
         <div className='display-image-icon'>
-          <img src={user.user.photoURL}></img>
+          <img src={user.user.photoURL} alt='test'></img>
         </div>
      
       </div>

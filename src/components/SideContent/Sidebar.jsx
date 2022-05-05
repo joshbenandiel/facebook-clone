@@ -1,6 +1,5 @@
 import React , { useState } from 'react'
 import '../../styles/SideBar.css'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { FaAngleDown } from 'react-icons/fa'
 import { FaAngleUp } from 'react-icons/fa'
 import { Notification } from '../SideContent/Notification'
@@ -27,7 +26,7 @@ export const SideBar = ({id, setId, user}) => {
         <ul className='sidebar-menu'>
           <li>
             <div className='display-image-icon-sidebar p-2 pe-2 ps-1'>
-              <img src={user.user.photoURL}></img>
+              <img src={user.user.photoURL} alt='test'></img>
             </div> 
             {user.user.displayName}
           </li>

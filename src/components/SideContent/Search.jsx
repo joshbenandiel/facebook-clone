@@ -15,7 +15,7 @@ export const Search = ({setId}) => {
     if(outsideIsClick){
       setId('home')
     }
-  },[outsideIsClick])
+  },[outsideIsClick, setId])
   
   return (
     <section className='search-container'>

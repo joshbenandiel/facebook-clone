@@ -21,15 +21,15 @@ export const Notification = ({setId}) => {
     if(label === 'unread'){
       const unreadArr = [];
       notifs.forEach((notif) => {
-        if (notif.type == "unread")
+        if (notif.type === "unread")
         unreadArr.push(notif); 
       });
       return setNotifs(unreadArr)
     }
-    if (label == "all") {
+    if (label === "all") {
       setNotifs(notifications)
     }
-  },[label])
+  },[label, notifs])
 
   useEffect(() => {
     setNotifs(notifications)
@@ -40,7 +40,7 @@ export const Notification = ({setId}) => {
     if(outsideIsClick){
       setId('home')
     }
-  },[outsideIsClick])
+  },[outsideIsClick, setId])
   
   const handleLabelClick = (e) => {
     setLabel(e.target.name)
@@ -53,10 +53,10 @@ export const Notification = ({setId}) => {
 
   const readNotif = (data) => {
     setNotifId('')
-    const findData = notifs.find((notif) => notif.id == data.id)
+    const findData = notifs.find((notif) => notif.id === data.id)
     if(findData){
-      if(findData.type == 'read') return findData.type = 'unread';
-      if(findData.type == 'unread') return findData.type = 'read';
+      if(findData.type ==='read') return findData.type = 'unread';
+      if(findData.type === 'unread') return findData.type = 'read';
     }
   }
 

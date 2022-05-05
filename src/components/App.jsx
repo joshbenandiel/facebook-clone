@@ -16,7 +16,7 @@ import { AllStories } from './Main/AllStories';
 function App() {
 
   const [id, setId] = useState('home')
-  const {signIn, user, error} = useFacebook()
+  const {signIn, user} = useFacebook()
   const [createPost, setCreatePost] = useState(null)
   const [seeAllStories, setSeeAllStories] = useState(false)
   const [postContent, setPostContent] = useState('')

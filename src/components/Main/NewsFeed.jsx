@@ -1,4 +1,4 @@
-import React, { useEffect , useRef, useState} from 'react'
+import React, { useRef, useState} from 'react'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import '../../styles/NewsFeed.css'
 import { IoIosAdd, IoMdPhotos } from 'react-icons/io'
@@ -54,13 +54,14 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
   
       uploadTask.on('state_changed', 
         (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setLoading(true)
           switch (snapshot.state) {
             case 'paused':
               break;
             case 'running':
               break;
+            default:
           }
         }, 
         (error) => {

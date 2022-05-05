@@ -13,7 +13,6 @@ import {BsThreeDots} from 'react-icons/bs'
 import {MdAddPhotoAlternate} from 'react-icons/md'
 import CircularProgress from '@mui/material/CircularProgress';
 import { writePostData, useGetPostsData } from '../../firebase-config'
-import uuid from 'react-uuid'
 
 export const Createpost = ({user,setCreatePost, postData, setPostData, setPostContent, postContent}) => {
 
@@ -50,13 +49,14 @@ export const Createpost = ({user,setCreatePost, postData, setPostData, setPostCo
   
       uploadTask.on('state_changed', 
         (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           setLoading(true)
           switch (snapshot.state) {
             case 'paused':
               break;
             case 'running':
               break;
+            default:
           }
         }, 
         (error) => {

@@ -15,7 +15,7 @@ export const Messages = ({setId}) => {
     if(outsideIsClick){
       setId('home')
     }
-  },[outsideIsClick])
+  },[outsideIsClick, setId])
   return (
     <div ref={wrapper} className='messages-container'>
       <div className='messages-wrapper'>

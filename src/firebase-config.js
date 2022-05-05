@@ -86,9 +86,7 @@ export const useGetAllData = () => {
      
     })
   }
-  useEffect(() => {
-    data()
-  },[data])
+  data()
 
 
 
