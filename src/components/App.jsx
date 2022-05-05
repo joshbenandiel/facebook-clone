@@ -9,6 +9,7 @@ import { useFacebook } from '../facebook';
 import logo from '../images/Facebook-Logo.png'
 import { Createpost } from './Main/Createpost';
 import { AllStories } from './Main/AllStories';
+import Privacy from '../Privacy';
 
 
 
@@ -70,11 +71,14 @@ function App() {
         />}
       </div>
     ) : (
-      <div className='facebook-login-container'>
-        <img className='facebook-logo-login'src={logo} alt="" />
-        <button onClick={signIn}>Sign In</button>
-      </div>
-
+      <>
+        <div className='facebook-login-container'>
+          <img className='facebook-logo-login'src={logo} alt="" />
+          <button onClick={signIn}>Sign In</button>
+          <Privacy/>
+        </div>
+        
+      </>
     )}
     </>
   );
