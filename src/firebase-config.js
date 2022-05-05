@@ -96,7 +96,6 @@ export const useGetAllData = () => {
 export const useGetPostsData = () => {
 
   const [allPostsData, setAllPostsData] = useState([])
-  console.log(allPostsData.length)
   const dbRef = ref(db)
   
   function data(){

@@ -31,7 +31,6 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
   
   const {allData } = useGetAllData()
   const { allPostsData } = useGetPostsData()
-  console.log(allPostsData)
   
   
   const inputRef = useRef()
