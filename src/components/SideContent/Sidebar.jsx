@@ -59,13 +59,7 @@ export const SideBar = ({id, setId, user}) => {
         <div className='sidebar-shortcut-section'>
           <p className='m-0'>Your shortcuts</p>
           <ul className='sidebar-menu-shortcuts'>
-            {shortcuts.map((data,index) => {
-              return (
-                <li className='p-2' key={index}>
-                  <img className='pe-2'src={data.url} alt='shortcuts'/> {data.name}
-                </li>
-              )
-            })}
+            
           </ul>
         </div>
       </div>
@@ -182,14 +176,4 @@ const images = [
 ]
 
 
-const shortcuts = [
 
-  {
-    url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/12512181_774488585988936_247651205_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeH8zD8bJRKOqCyUQbrFHbLP8Z4YJw2NRjXxnhgnDY1GNYcAFYCwVJyVS6lEkVIxqbYYf_kJR4jMGmA0xL8wKEVe&_nc_ohc=HgfRFIhgSEoAX-R5s92&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT8jBEaG5lcb4xyJ1uUa7Jva1RS7YS99ylpo0ZxfIOThWQ&oe=62738C9A',
-    name: 'Coin Master'
-  },
-  {
-    url: 'https://scontent.fmnl13-1.fna.fbcdn.net/v/t39.2081-6/26477732_5082148895180525_4133107059698696192_n.png?stp=c6.6.31.31a_dst-png_p36x36&_nc_cat=1&ccb=1-5&_nc_sid=eaa83b&_nc_eui2=AeFsWWWoYAUDvl0Xd3RYQ1qN0rprziV-zurSumvOJX7O6qXX3mbYCCk49XxYTk6_RGwHxGO07oOTeaplusWycsSk&_nc_ohc=aWScs_oCRrgAX8ySV6J&_nc_ht=scontent.fmnl13-1.fna&oh=00_AT8uUt8HOdNP7xVvXylzW5__mUMASHiFuRWhoBqsuYm1dA&oe=62735BE4',
-    name: 'FarmVille 2'
-  }
-]

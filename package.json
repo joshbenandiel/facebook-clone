@@ -13,6 +13,7 @@
     "boxicons": "^2.1.2",
     "firebase": "^9.7.0",
     "node": "^17.7.2",
+    "package.json": "^2.0.1",
     "passport-oauth2": "^1.6.1",
     "react": "^18.1.0",
     "react-collapse": "^5.1.1",

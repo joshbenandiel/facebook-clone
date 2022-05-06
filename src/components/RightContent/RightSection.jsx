@@ -2,11 +2,30 @@ import React from 'react'
 import '../../styles/RightSection.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {BiBell} from 'react-icons/bi'
-import {FaBullhorn, FaBirthdayCake, FaUserCircle} from 'react-icons/fa'
+import {FaBullhorn, FaBirthdayCake} from 'react-icons/fa'
 import {HiPencilAlt} from 'react-icons/hi'
+import userAerica from '../../images/contacts/Aerica.jpg'
+import userTrinidad from '../../images/contacts/Trinidad.jpg'
+import userCali from '../../images/contacts/Cali.jpg'
 
 
-export const RightSection = () => {
+export const RightSection = ({activeChat,setActiveChat, setMinimizeArr, minimizeArr}) => {
+
+
+
+  const handleChat = (profile) => {
+    const user = activeChat.find(x => x.id === profile.id);
+    const filteredMinimize = minimizeArr.filter(x => x.id !== profile.id)
+    if (user) return;
+    setActiveChat([
+      ...activeChat,
+      profile
+    ])
+    setMinimizeArr(filteredMinimize)
+  }
+
+
+  
   return (
     <div className='right-section-container pt-4'>
         <div className='sponsor-section'>
@@ -32,29 +51,20 @@ export const RightSection = () => {
         </div>
         <div className='contact-section mt-1'>
           <p>Contacts</p>
-          <div className='contact-wrapper'>
-            <div className='position-relative'>
-              <FaUserCircle className='me-2'color='#fff' size={40}/>
-              <span className='green-circle'></span>
-            </div>
-            <p>Your Friend 1</p>
-          </div>
-          <div className='contact-wrapper'>
-            <div className='position-relative'>
-              <FaUserCircle className='me-2'color='#fff' size={40}/>
-              <span className='green-circle'></span>
-            </div>
-            <p>Your Friend 2</p>
-          </div>
-          <div className='contact-wrapper'>
-            <div className='position-relative'>
-                <FaUserCircle className='me-2'color='#fff' size={40}/>
-                <span className='green-circle'></span>
-            </div>
-            <p>Your Friend 3</p>
-          </div>
-
-
+          {users.map((profile) => {
+            return (
+              <div
+                key={profile.id}
+                onClick={() => handleChat(profile)} 
+                className='contact-wrapper'>
+                <div className='position-relative'>
+                  <img className='contacts-images-user'src={profile.image} alt="aerica" />
+                  <span className='green-circle'></span>
+                </div>
+                <p className='ms-3' style={{fontSize: '17px'}}>{profile.name}</p>
+              </div>
+            )
+          })}
           <div className='new-message-button'>
             <div className='new-message-circle'>
               <HiPencilAlt size={30}/>
@@ -64,6 +74,24 @@ export const RightSection = () => {
     </div>
   )
 }
+
+const users = [
+  {
+    id: 1,
+    name: 'Aerica Pepito',
+    image: userAerica
+  },
+  {
+    id: 2,
+    name: 'Trinidad Jacinto',
+    image: userTrinidad
+  },
+  {
+    id: 3,
+    name: 'Cali Dog',
+    image: userCali
+  }
+]
 
 
 

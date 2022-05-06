@@ -10,6 +10,8 @@ import logo from '../images/Facebook-Logo.png'
 import { Createpost } from './Main/Createpost';
 import { AllStories } from './Main/AllStories';
 import Privacy from '../Privacy';
+import { Chat } from './RightContent/Chat';
+import { ChatHeadeMinimize } from './RightContent/ChatHeadeMinimize';
 
 
 
@@ -21,6 +23,8 @@ function App() {
   const [createPost, setCreatePost] = useState(null)
   const [seeAllStories, setSeeAllStories] = useState(false)
   const [postContent, setPostContent] = useState('')
+  const [activeChat, setActiveChat] = useState([])
+  const [minimizeArr, setMinimizeArr] = useState([])
 
   const [postData, setPostData] = useState([
     {
@@ -31,14 +35,44 @@ function App() {
       date:''
     }
   ]);
+
+  console.log(activeChat)
   
 
-  
+
 
   return (
     <>
     {user.accessToken ? (
       <div className='App'>
+        <div
+          className='chatbox-minimize-wrapper'>
+          {minimizeArr && minimizeArr.map(user => {
+            return (
+              <ChatHeadeMinimize 
+                setMinimizeArr={setMinimizeArr}
+                minimizeArr={minimizeArr}
+                setActiveChat={setActiveChat}
+                allUser={activeChat}
+                user={user}/>
+            )
+          })}
+        </div>
+        <div className='chatbox-wrapper'>
+          {activeChat.map(data => {
+            return (
+              <>
+              <Chat
+                key={data.id}
+                allUsers={activeChat}
+                setActiveChat={setActiveChat}
+                setMinimizeArr={setMinimizeArr}
+                users={data}
+              />
+              </>
+            )
+          })}
+        </div>
         {id === 'search' && <Search setId={setId}/>}
         {seeAllStories && <AllStories setSeeAllStories={setSeeAllStories}/>}
         <div className='left-sidebar'>
@@ -58,7 +92,11 @@ function App() {
           user={user}
           id={id}/>
         <div className='left-sidebar'>
-          <RightSection/>
+          <RightSection 
+            minimizeArr={minimizeArr}
+            setMinimizeArr={setMinimizeArr}
+            activeChat={activeChat} 
+            setActiveChat={setActiveChat}/>
         </div>
         {createPost && 
           <Createpost 

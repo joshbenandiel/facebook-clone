@@ -55,3 +55,57 @@
 ::-webkit-scrollbar-thumb {
   background: #B0B3B8;
 }
+
+
+.minimize-chathead {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 3000;
+  cursor: pointer;
+}
+
+.minimize-chathead img {
+  height: 52px;
+  border-radius: 100%;
+}
+
+.green-circle-new {
+  position: absolute;
+  background-color: #31A24C;
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  right: 0px;
+  bottom: -18px;
+  z-index: 2;
+  border: 2px solid #18191A;
+}
+
+.chatbox-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 6rem;
+  display: flex;
+  gap: 5px;
+  z-index: 3000;
+}
+
+/* .chatbox-container-main {
+  position: absolute;
+  z-index: 3000;
+  width: 100%;
+  height: 100vh;
+} */
+
+.chatbox-minimize-wrapper {
+  position: absolute;
+  right: 29px;
+  bottom: 92px;
+  z-index: 3000;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+}

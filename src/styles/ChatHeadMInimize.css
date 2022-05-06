@@ -1,0 +1,31 @@
+.chathead-minimize-image {
+  height: 52px;
+  border-radius: 100%;
+  width: 52px;
+  cursor: pointer;
+  
+}
+
+.green-circle-new {
+  position: absolute;
+  background-color: #31A24C;
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  right: 0px;
+  bottom: -4px;
+  z-index: 2;
+  border: 2px solid #18191A;
+}
+
+
+.chathead-left-dock {
+  display: flex;
+  height: auto;
+  width: auto;
+}
+
+.chatbox-minimize {
+  display: flex;
+  gap: 5px;
+}
