@@ -1,17 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/App.css'
 import { NewsFeed } from './Main/NewsFeed';
 import { RightSection } from './RightContent/RightSection';
 import { Navbar } from './SideContent/Navbar';
 import { Search } from './SideContent/Search';
 import { SideBar } from './SideContent/Sidebar';
-import { useFacebook } from '../facebook';
-import logo from '../images/Facebook-Logo.png'
 import { Createpost } from './Main/Createpost';
 import { AllStories } from './Main/AllStories';
-import Privacy from '../Privacy';
 import { Chat } from './RightContent/Chat';
 import { ChatHeadeMinimize } from './RightContent/ChatHeadeMinimize';
+import juls from '../images/story-images/juls.jpg'
+import aics from '../images/story-images/aicss.jpg'
+import trinidad from '../images/story-images/Trinidad.jpg'
+import cali from '../images/story-images/Cali.jpg'
+import profile from '../images/profile.jpg'
+import beach from '../images/newsfeed-images/beach.jpg'
 
 
 
@@ -19,31 +22,23 @@ import { ChatHeadeMinimize } from './RightContent/ChatHeadeMinimize';
 function App() {
 
   const [id, setId] = useState('home')
-  const {signIn, user} = useFacebook()
   const [createPost, setCreatePost] = useState(null)
   const [seeAllStories, setSeeAllStories] = useState(false)
   const [postContent, setPostContent] = useState('')
   const [activeChat, setActiveChat] = useState([])
   const [minimizeArr, setMinimizeArr] = useState([])
 
-  const [postData, setPostData] = useState([
-    {
-      profile: '',
-      icon: '',
-      content: '',
-      image: '',
-      date:''
-    }
-  ]);
-
-  console.log(activeChat)
+  const [postData, setPostData] = useState([]);
+  const [storyData, setStoryData] = useState([])
   
-
+  useEffect(() => {
+    setPostData(post)
+    setStoryData(imagesStory)
+  }, [])
 
 
   return (
     <>
-    {user.accessToken ? (
       <div className='App'>
         <div
           className='chatbox-minimize-wrapper'>
@@ -74,22 +69,26 @@ function App() {
           })}
         </div>
         {id === 'search' && <Search setId={setId}/>}
-        {seeAllStories && <AllStories setSeeAllStories={setSeeAllStories}/>}
+        {seeAllStories && <AllStories 
+        imagesStory={storyData}
+        setSeeAllStories={setSeeAllStories}/>}
         <div className='left-sidebar'>
           <Navbar  
-            user={user} 
+            // user={user} 
             setId={setId} 
             id={id}/>
           <SideBar 
-            user={user} 
+            // user={user} 
             id={id} 
             setId={setId}/>
         </div>
         <NewsFeed 
+          setStoryData={setStoryData}
+          setPostData={setPostData}
           setSeeAllStories={setSeeAllStories}
           postData={postData}
           setCreatePost={setCreatePost}
-          user={user}
+          storyData={storyData}
           id={id}/>
         <div className='left-sidebar'>
           <RightSection 
@@ -105,21 +104,66 @@ function App() {
             setPostData={setPostData}
             postData={postData}
             setCreatePost={setCreatePost}
-            user={user}
+            // user={user}
         />}
       </div>
-    ) : (
+    {/* ) : (
       <>
         <div className='facebook-login-container'>
           <img className='facebook-logo-login'src={logo} alt="" />
           <button onClick={signIn}>Sign In</button>
-          <Privacy/>
         </div>
         
       </>
-    )}
+    )} */}
     </>
   );
 }
 
 export default App;
+
+
+const today = new Date().toLocaleString();
+
+
+const imagesStory = [
+  {
+    id: 1,
+    url: juls,
+    display: juls,
+    name: 'Junell Jacinto',
+    date: today
+  },
+  {
+    id: 2,
+    url: aics,
+    display: aics,
+    name: 'Aerica Pepito',
+    date: today
+  },
+  {
+    id: 3,
+    url: trinidad,
+    display: trinidad,
+    name: 'Triniad Jacinto',
+    date: today
+  },
+  {
+    id: 4,
+    url: cali,
+    display: cali,
+    name: 'Cali The Dog',
+    date: today
+  },
+]
+
+const post = [
+  {
+    id: 1,
+    userProfile: profile,
+    userName: 'Josh Jacinto',
+    date: today,
+    content: 'Enjoy your day!',
+    image: beach
+  },
+]

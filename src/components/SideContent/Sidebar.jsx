@@ -4,8 +4,9 @@ import { FaAngleDown } from 'react-icons/fa'
 import { FaAngleUp } from 'react-icons/fa'
 import { Notification } from '../SideContent/Notification'
 import { Messages } from '../SideContent/Messages';
+import profile from '../../images/profile.jpg'
 
-export const SideBar = ({id, setId, user}) => {
+export const SideBar = ({id, setId}) => {
 
 
   const [isOpened, setIsOpened] = useState(false)
@@ -26,9 +27,9 @@ export const SideBar = ({id, setId, user}) => {
         <ul className='sidebar-menu'>
           <li>
             <div className='display-image-icon-sidebar p-2 pe-2 ps-1'>
-              <img src={user.user.photoURL} alt='test'></img>
+              <img src={profile} alt='test'></img>
             </div> 
-            {user.user.displayName}
+            Josh Jacinto
           </li>
           {defineImages().map((image,index) => {
             return (

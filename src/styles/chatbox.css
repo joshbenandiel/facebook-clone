@@ -145,7 +145,7 @@
   color: #fff;
   padding: 0 20px;
   position: relative;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .chat-messages {
@@ -162,5 +162,7 @@
   position: absolute;
   bottom: 0;
   right: 20px;
+  height: 100%;
+  justify-content: flex-end;
   align-items: flex-end;
 }

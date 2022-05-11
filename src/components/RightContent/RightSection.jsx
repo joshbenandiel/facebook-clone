@@ -7,6 +7,7 @@ import {HiPencilAlt} from 'react-icons/hi'
 import userAerica from '../../images/contacts/Aerica.jpg'
 import userTrinidad from '../../images/contacts/Trinidad.jpg'
 import userCali from '../../images/contacts/Cali.jpg'
+import page from '../../images/userpage.jpg'
 
 
 export const RightSection = ({activeChat,setActiveChat, setMinimizeArr, minimizeArr}) => {
@@ -34,7 +35,7 @@ export const RightSection = ({activeChat,setActiveChat, setMinimizeArr, minimize
         <div className='yourpage-section mt-1'>
           <p>Your Pages</p>
           <div className='pages-wrapper d-flex align-items-center'>
-            <AccountCircleIcon className='me-2' sx={{fontSize: 40}}/><p className='mb-0'>User Page</p>
+            <img src={page} alt="" /><span className='ms-2'>Sojj Gaming</span>
           </div>
           <div className='pages-wrapper d-flex align-items-center ps-4'>
             <BiBell className='me-2' size={22}/><p className='mb-0' style={{fontSize: '15px'}}>0 Notifications</p>

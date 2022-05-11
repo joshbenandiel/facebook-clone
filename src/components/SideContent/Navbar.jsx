@@ -67,7 +67,7 @@ export const Navbar = ({id, setId, user}) => {
           </div>
         </div>
         <div className='display-image-icon'>
-          <img src={user.user.photoURL} alt='test'></img>
+          {/* <img src='' alt='test'></img> */}
         </div>
      
       </div>

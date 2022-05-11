@@ -3,19 +3,17 @@ import '../../styles/AllStories.css'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {GrFormAdd} from 'react-icons/gr'
 import photo from '../../images/photo.png'
-import { useGetAllData } from '../../firebase-config'
 
 
-export const AllStories = ({setSeeAllStories}) => {
+export const AllStories = ({setSeeAllStories, imagesStory}) => {
 
-  const {allData} = useGetAllData()
 
   const [active, setActive] = useState('')
   const [image, setImage] = useState('')
 
   const handleImage = (user) => {
-    setActive(user.date)
-    setImage(user.stories)
+    setActive(user.id)
+    setImage(user.url)
   }
 
   return (
@@ -45,14 +43,15 @@ export const AllStories = ({setSeeAllStories}) => {
         </div>
         <div className='all-story-section mt-5'>
           <h5>All Stories</h5>
-          {allData.slice(0).reverse().map(user => {
+          {imagesStory.slice(0).reverse().map((user, index) => {
             return (
               <button 
+                key={index}
                 onClick={() => handleImage(user)}
-                className={`all-story-wrapper${active === user.date ? '-active'   : ' '} mb-2`}>
+                className={`all-story-wrapper${active === user.id ? '-active'   : ' '} mb-2`}>
                 <img className='all-story-display-icon m-3 ms-0'src={user.display} alt="" />
                 <div>
-                  <p className='p-0 fw-bold m-0'>{user.username}</p>
+                  <p className='p-0 fw-bold m-0'>{user.name}</p>
                   <p className='m-0' style={{fontSize: '12px'}}>{user.date}</p>
                 </div>
               </button>

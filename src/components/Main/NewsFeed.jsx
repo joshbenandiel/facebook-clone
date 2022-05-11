@@ -1,5 +1,4 @@
-import React, { useRef, useState} from 'react'
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import React, { useEffect, useRef, useState} from 'react'
 import '../../styles/NewsFeed.css'
 import { IoIosAdd, IoMdPhotos } from 'react-icons/io'
 import { MdVideoCameraFront } from 'react-icons/md'
@@ -12,29 +11,27 @@ import {VscComment} from 'react-icons/vsc'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {BsFillArrowRightCircleFill} from 'react-icons/bs'
 import CircularProgress from '@mui/material/CircularProgress';
-import { writeUserData, useGetAllData , useGetPostsData, deletePostsData} from '../../firebase-config';
+import profile from '../../images/profile.jpg'
+import juls from '../../images/story-images/juls.jpg'
+import aics from '../../images/story-images/aicss.jpg'
+import trinidad from '../../images/story-images/Trinidad.jpg'
+import cali from '../../images/story-images/Cali.jpg'
+import beach from '../../images/newsfeed-images/beach.jpg'
 
 
-export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
 
-  const nickname = user.user.displayName.split(' ')
+export const NewsFeed = ({id, storyData, setCreatePost, setSeeAllStories, postData, setPostData, setStoryData}) => {
+
+  // const nickname = user.user.displayName.split(' ')
   const [story, setStory] = useState(false)
   const [imageUpload, setImageUpload] = useState(null)
   const [loading, setLoading] = useState(false)
   const [deleteIsTrue, setDeleteIsTrue] = useState(null)
-  
-  
-  
-  const today = new Date().toLocaleString();
 
-
-  
-  const {allData } = useGetAllData()
-  const { allPostsData } = useGetPostsData()
   
   
   const inputRef = useRef()
-
+  const today = new Date().toLocaleString();
   const uploadImage = () => {
     if(inputRef){
       inputRef.current.click()
@@ -46,45 +43,23 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
   }
 
   const shareToStory = () => {
-    if (imageUpload) {
-      const storage = getStorage();
-      const storageRef = ref(storage, `images/${imageUpload.name}`);
-      const uploadTask = uploadBytesResumable(storageRef, imageUpload);
-  
-      uploadTask.on('state_changed', 
-        (snapshot) => {
-          // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setLoading(true)
-          switch (snapshot.state) {
-            case 'paused':
-              break;
-            case 'running':
-              break;
-            default:
-          }
-        }, 
-        (error) => {
-          console.log(error)
-        }, 
-        () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          console.log('File available at', downloadURL);
-          setLoading(false)
-          writeUserData(
-            allData.length + 1,
-            user.user.displayName,
-            user.user.photoURL,
-            downloadURL,
-            today,
-            allData.length + 1
-          )
-          setImageUpload('')
-          setStory(false)
-        });
-        
-      }
-      );
-    } 
+    setLoading(true)
+    setTimeout(() => {
+      setStoryData([
+        ...storyData,
+        {
+          id: storyData.length + 1,
+          url: URL.createObjectURL(imageUpload),
+          display: profile,
+          name: 'Josh Jacinto',
+          date: today
+        }
+      ])
+      setLoading(false)
+      setStory(false)
+      setImageUpload('')
+    },2000)
+    
   }
 
   const getPosts = (user) => {
@@ -94,9 +69,10 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
   }
  
   const handleDelete = (userId) => {
-    console.log(userId)
-    deletePostsData(userId)
-    // console.log(allPostsData)
+    const filtered = postData.filter(x => x.id !== userId)
+    if(filtered){
+      setPostData(filtered)
+    }
   }
   
   return (
@@ -119,8 +95,8 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
             <div className='create-story-wrapper h-25 d-flex justify-content-center flex-column'>
               <h3 className='mt-5 mb-3'>Your Story</h3>
               <div className='d-flex align-items-center'>
-                <img className='me-3'src={user.user.photoURL} alt="" />
-                <h5>{user.user.displayName}</h5>
+                <img className='me-3'src={profile} alt="" />
+                <h5>Josh Jacinto</h5>
               </div>
             </div>
             <button 
@@ -143,7 +119,7 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
         </div>
       )}
       <section className="wrapper position-relative">
-        {allData.length > 3 && 
+        {imagesStory.length > 3 && 
           <BsFillArrowRightCircleFill 
           onClick={() => setSeeAllStories(true)}
           className='see-all-stories-button' 
@@ -154,35 +130,34 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
           onClick={() => setStory(true)}
           className='create-story p-0'>
             <input  className='d-none' type='file'/>
-            <img src={user.user.photoURL} alt='profile'/>
+            <img src={profile} alt='profile'/>
             <span className='add-story-circle'>
             <IoIosAdd className='add-story-button'size={30}/>
             </span>
             <p>Create story</p>
           </div>
-          {allData.slice(0).reverse().slice(0,4).map((user, index)=> {
-            if(!user.date) return null;
+          {storyData.slice(0).reverse().slice(0,4).map((user, index)=> {
+            // if(!user.date) return null;
             return (
             <div 
               key={index}
               className='friends-story p-0 ms-2'
             >
               <img className='friends-story-user-profile' src={user.display} alt=''/>
-              <img className='story-image-uploaded'src={user.stories} alt="user-story" />
-              <p>{user.username}</p>
+              <img className='story-image-uploaded'src={user.url} alt="user-story" />
+              <p>{user.name}</p>
             </div>
             )
           })}
-          
         </div>
         <div className="row mt-4 p-0">
           <div className='post-section'>
             <div className="post-input">
-              <img className='input-icon' src={user.user.photoURL} alt="" />
+              <img className='input-icon' src={profile} alt="profile" />
               <button 
                 onClick={() => setCreatePost(true)}
                 className='input-box' name='post' type="text" placeholder={`What's on your mind, User`}>
-                What's on your mind, {nickname[0]}?
+                What's on your mind, Josh?
               </button>
             </div>
             <div className='post-buttons-section'>
@@ -220,22 +195,18 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
             <button className='create-room-button me-4'>
               <RiVideoAddFill className='me-2'size={25} color='#A43EC9'/>
             Create room</button>
-            <div className='position-relative me-4'>
-                <FaUserCircle className='me-2'color='#fff' size={40}/>
-                <span className='green-circle'></span>
-            </div>
-            <div className='position-relative me-4'>
-                <FaUserCircle className='me-2'color='#fff' size={40}/>
-                <span className='green-circle'></span>
-            </div>
-            <div className='position-relative me-4'>
-                <FaUserCircle className='me-2'color='#fff' size={40}/>
-                <span className='green-circle'></span>
-            </div>
+            {imagesStory.map((user, index) => {
+              return (
+                <div type="button" key={index} className='position-relative me-3'>
+                  <img  className='contacts-images-user' src={user.url} alt="chathead" />
+                  <span className='green-circle'></span>
+                </div>
+              )
+            })}
           </div>
         </div>
         <div className='row'>
-          {allPostsData.slice(0).reverse().map((user, index)=> {
+          {postData.slice(0).reverse().map((user, index)=> {
             if (!user) return null;
             return (
               <div key={index} className='newsfeed-posts mt-3 position-relative p-0'>
@@ -257,9 +228,9 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
                         />
                     </button>}
                   <div className='d-flex'>
-                    <img src={user.display} alt=''className='newsfeed-icon me-2'/>
+                    <img src={user.userProfile} alt=''className='newsfeed-icon me-2'/>
                   <div>
-                    <p className='user-name-newsfeed fw-bold'>{user.username}</p>
+                    <p className='user-name-newsfeed fw-bold'>{user.userName}</p>
                     <div className='d-flex align-items-center'>
                       <p style={{fontSize: '12px'}} className='user-name-newsfeed'>{user.date}</p>
                       <BsDot color='#fff'/><FaUserFriends color='#fff'/>
@@ -291,7 +262,7 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
               <div className='pe-3 ps-3'>
                   <div className='comment-section'>
                     <div className='d-flex p-2'>
-                      <img src={user.display} alt=''className='newsfeed-icon me-2'/>
+                      <img src={user.userProfile} alt=''className='newsfeed-icon me-2'/>
                       <input className='comment-input' type='text' placeholder='Write a comment...'></input>
                     </div>
                   </div>
@@ -306,3 +277,35 @@ export const NewsFeed = ({id, user, setCreatePost, setSeeAllStories}) => {
   )
 }
 
+const today = new Date().toLocaleString();
+
+const imagesStory = [
+  {
+    id: 1,
+    url: juls,
+    display: juls,
+    name: 'Junell Jacinto',
+    date: today
+  },
+  {
+    id: 2,
+    url: aics,
+    display: aics,
+    name: 'Aerica Pepito',
+    date: today
+  },
+  {
+    id: 3,
+    url: trinidad,
+    display: trinidad,
+    name: 'Triniad Jacinto',
+    date: today
+  },
+  {
+    id: 4,
+    url: cali,
+    display: cali,
+    name: 'Cali The Dog',
+    date: today
+  },
+]
