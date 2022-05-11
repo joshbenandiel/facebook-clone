@@ -1,6 +1,5 @@
 import React from 'react'
 import '../../styles/RightSection.css'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {BiBell} from 'react-icons/bi'
 import {FaBullhorn, FaBirthdayCake} from 'react-icons/fa'
 import {HiPencilAlt} from 'react-icons/hi'

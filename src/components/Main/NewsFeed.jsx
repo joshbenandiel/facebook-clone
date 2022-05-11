@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState} from 'react'
+import React, { useRef, useState} from 'react'
 import '../../styles/NewsFeed.css'
 import { IoIosAdd, IoMdPhotos } from 'react-icons/io'
 import { MdVideoCameraFront } from 'react-icons/md'
 import { GoSmiley } from 'react-icons/go'
 import { RiVideoAddFill , RiShareForwardLine, RiDeleteBin2Fill} from 'react-icons/ri'
-import {FaUserCircle, FaUserFriends} from 'react-icons/fa'
+import {FaUserFriends} from 'react-icons/fa'
 import {BsDot, BsThreeDots} from 'react-icons/bs'
 import {AiOutlineLike} from 'react-icons/ai'
 import {VscComment} from 'react-icons/vsc'
@@ -16,7 +16,6 @@ import juls from '../../images/story-images/juls.jpg'
 import aics from '../../images/story-images/aicss.jpg'
 import trinidad from '../../images/story-images/Trinidad.jpg'
 import cali from '../../images/story-images/Cali.jpg'
-import beach from '../../images/newsfeed-images/beach.jpg'
 
 
 
