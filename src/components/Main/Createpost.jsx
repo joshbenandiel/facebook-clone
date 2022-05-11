@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import '../../styles/CreatePost.css'
 import {RiCloseCircleFill} from 'react-icons/ri'
 import {ImEarth} from 'react-icons/im'
@@ -23,8 +22,6 @@ export const Createpost = ({setCreatePost, postData, setPostData, setPostContent
   const [photo, setPhoto] = useState(false);
   const [userPhoto, setUserPhoto] = useState(null)
   const [loading, setLoading] = useState(false)
-
-  console.log(postData)
 
   const onUploadClick = () => {
     if (uploadRef.current) {
