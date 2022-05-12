@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../styles/ChatHeadMInimize.css'
 
-export const ChatHeadeMinimize = ({user, allUser, setActiveChat, minimizeArr, setMinimizeArr}) => {
+export const ChatHeadeMinimize = ({user, allUser, setActiveChat, minimizeArr, setMinimizeArr, uniq}) => {
 
 
 
@@ -21,7 +21,8 @@ export const ChatHeadeMinimize = ({user, allUser, setActiveChat, minimizeArr, se
   
   return (
     <div 
-     onClick={() => handleOpenChatBox(user)} 
+      key={uniq}
+      onClick={() => handleOpenChatBox(user)} 
       className='position-relative'>
       <img  className='chathead-minimize-image' src={user.image} alt="chathead" />
       <span className='green-circle-new'></span>

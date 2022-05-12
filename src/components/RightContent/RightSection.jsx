@@ -14,9 +14,11 @@ export const RightSection = ({activeChat,setActiveChat, setMinimizeArr, minimize
 
 
   const handleChat = (profile) => {
+
     const user = activeChat.find(x => x.id === profile.id);
     const filteredMinimize = minimizeArr.filter(x => x.id !== profile.id)
     if (user) return;
+    setActiveChat('josh')
     setActiveChat([
       ...activeChat,
       profile

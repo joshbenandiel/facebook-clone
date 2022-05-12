@@ -43,7 +43,7 @@ export const AllStories = ({setSeeAllStories, imagesStory}) => {
         </div>
         <div className='all-story-section mt-5'>
           <h5>All Stories</h5>
-          {imagesStory.slice(0).reverse().map((user, index) => {
+          {imagesStory && imagesStory.slice(0).reverse().map((user, index) => {
             return (
               <button 
                 key={index}

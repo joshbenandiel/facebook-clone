@@ -37,41 +37,45 @@ function App() {
   }, [])
 
 
+
   return (
     <>
       <div className='App'>
-        <div
-          className='chatbox-minimize-wrapper'>
-          {minimizeArr && minimizeArr.map(user => {
-            return (
-              <ChatHeadeMinimize 
-                setMinimizeArr={setMinimizeArr}
-                minimizeArr={minimizeArr}
-                setActiveChat={setActiveChat}
-                allUser={activeChat}
-                user={user}/>
-            )
-          })}
+        <div className='chatbox-minimize-wrapper'>
+          <div>
+            {minimizeArr && minimizeArr.map((user, index) => {
+              return (
+                <ChatHeadeMinimize 
+                  uniq={index}
+                  setMinimizeArr={setMinimizeArr}
+                  minimizeArr={minimizeArr}
+                  setActiveChat={setActiveChat}
+                  allUser={activeChat}
+                  user={user}
+                  />
+              )
+            })}
+          </div>
         </div>
         <div className='chatbox-wrapper'>
-          {activeChat.map(data => {
-            return (
-              <>
-              <Chat
-                key={data.id}
-                allUsers={activeChat}
-                setActiveChat={setActiveChat}
-                setMinimizeArr={setMinimizeArr}
-                users={data}
-              />
-              </>
-            )
-          })}
+            {activeChat.map((data, index) => {
+              return (
+                <>
+                <Chat
+                  uniq={index}
+                  activeChat={activeChat}
+                  setActiveChat={setActiveChat}
+                  setMinimizeArr={setMinimizeArr}
+                  users={data}
+                />
+                </>
+              )
+            })}
         </div>
         {id === 'search' && <Search setId={setId}/>}
         {seeAllStories && <AllStories 
-        imagesStory={storyData}
-        setSeeAllStories={setSeeAllStories}/>}
+          imagesStory={storyData}
+          setSeeAllStories={setSeeAllStories}/>}
         <div className='left-sidebar'>
           <Navbar  
             // user={user} 

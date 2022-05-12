@@ -9,7 +9,7 @@ import {AiOutlineFileGif, AiFillLike} from 'react-icons/ai'
 import { useOutsideAlerter } from '../../hooks/OutsideAlerter'
 import '../../styles/ChatHeadMInimize.css'
 
-export const Chat = ({users, setMinimizeArr, setActiveChat, allUsers, key}) => {
+export const Chat = ({users, setMinimizeArr, setActiveChat, activeChat, uniq}) => {
   
 
   const [value, setValue] = useState('')
@@ -18,7 +18,6 @@ export const Chat = ({users, setMinimizeArr, setActiveChat, allUsers, key}) => {
   const val = useOutsideAlerter(chatboxWrapper)
 
   const [messages, setMessages] = useState([])
-  console.log(messages)
 
   
 
@@ -30,21 +29,21 @@ export const Chat = ({users, setMinimizeArr, setActiveChat, allUsers, key}) => {
 
 
   const handleClose = (user) => {
-   const userArr = allUsers.filter(x => x.id !== user.id)
+   const userArr = activeChat.filter(x => x.id !== user.id)
    setActiveChat(userArr)
   }
 
 
   const handleMinimize = (user) => {
-   const userArr = allUsers.find(x => x.id === user.id)
-   const remainingUser = allUsers.filter(x => x.id !== user.id)
-   if(userArr) {
-     setMinimizeArr(prev => [
-       ...prev,
-       userArr
-     ])
-     setActiveChat(remainingUser)
-   }
+    const userArr = activeChat.find(x => x.id === user.id)
+    const remainingUser = activeChat.filter(x => x.id !== user.id)
+    if(userArr) {
+      setMinimizeArr(prev => [
+        ...prev,
+        userArr
+      ])
+      setActiveChat(remainingUser)
+    }
   }
 
   const handleMessages = () => {
@@ -66,9 +65,7 @@ export const Chat = ({users, setMinimizeArr, setActiveChat, allUsers, key}) => {
   } 
   
   return (
-      <div 
-        key={key}
-        ref={chatboxWrapper} className='chatbox-container'>
+      <div key={uniq} ref={chatboxWrapper} className='chatbox-container'>
         <div className='h-100 w-100 d-flex flex-column justify-content-between'>
           <div className='chatbox-header'>
             <div className='d-flex'>
@@ -95,9 +92,9 @@ export const Chat = ({users, setMinimizeArr, setActiveChat, allUsers, key}) => {
           </div>
           <div className='chatbox-messages-area'>
             <div className='chat-messages-wrapper d-flex flex-column'>
-              {messages.map(text => {
+              {messages.map((text, index) => {
                 return (
-                  <p className='chat-messages'>{text}</p>
+                  <p key={index} className='chat-messages'>{text}</p>
                 )
               })}
             </div>
